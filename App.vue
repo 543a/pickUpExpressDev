@@ -29,4 +29,20 @@
 		color: #333;
 		padding: 10px;
 	}
+  // 列表项边框，间距颜色
+  .listItem{
+    border-radius: 15px;
+    border: 1px solid #f1f2f3;
+    margin: 8px
+  }
+  // 列表项区域颜色
+  .bgColor{
+    background-color: #dfe1e3
+  }
+  /deep/.uni-list-item__content--center{
+    margin-left: 20px;
+  }
+  .marginLeft{
+    margin-left: 20px;
+  }
 </style>
