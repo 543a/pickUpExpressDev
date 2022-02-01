@@ -3,7 +3,7 @@
     <view style="position: sticky;top:0;z-index: 10000;background-color: white">
       <view class="topSearch">
         <uni-easyinput prefixIcon="search" v-model="value" placeholder="请输入内容" style="width: 100%"></uni-easyinput>
-        <uni-icons type="scan" size="30"></uni-icons>
+<!--        <uni-icons type="scan" size="30"></uni-icons>-->
       </view>
       <view>
         <uni-segmented-control :current="current" :values="itemsOption" @clickItem="onClickItem" styleType="text" activeColor="#4cd964"></uni-segmented-control>
@@ -16,9 +16,11 @@
             class="listItem"
             v-for="item in expressList"
             :key="item.id"
-            :title="item.title"
+            :title="`运单号：${item.title}`"
             :thumb="item.src"
-            :note="item.note"
+            :note="`取件码:${item.note}\n${item.status}`"
+            :clickable="true"
+            @click="toDetailsInfo(item)"
         >
           <template slot="header">
             <image :src="item.src" style="border-radius: 50%;width: 50px;height: 50px"></image>
@@ -44,14 +46,15 @@ export default {
       more: 'more',
       itemsOption: ['代取订单', '历史订单' ],
       expressList: [
-        { id: 1, src:testImage, title: '运单号：YT33444333', note: `取件码 W-12-1209\n代取中` },
-        { id: 2, src:testImage, title: '运单号：YT33444333', note: `取件码 W-12-1209\n代取中` },
-        { id: 3, src:testImage, title: '运单号：YT33444333', note: `取件码 W-12-1209\n代取中` },
-        { id: 4, src:testImage, title: '运单号：YT33444333', note: `取件码 W-12-1209\n代取中` },
-        { id: 5, src:testImage, title: '运单号：YT33444333', note: `取件码 W-12-1209\n代取中` },
-        { id: 6, src:testImage, title: '运单号：YT33444333', note: `取件码 W-12-1209\n代取中` },
-        { id: 7, src:testImage, title: '运单号：YT33444333', note: `取件码 W-12-1209\n代取中` },
-        { id: 8, src:testImage, title: '运单号：YT32122222', note: '取件码 W-12-1209\n待取中' },
+        { id: 1, src:testImage, title: 'YT33444333', note: `W-12-1209`, status: '代取中' , isTrue: false},
+        { id: 2, src:testImage, title: ' YT33444333', note: `W-12-1209`, status: '代取中' , isTrue: false},
+        { id: 3, src:testImage, title: ' YT33444333', note: `W-12-1209`, status: '代取中' , isTrue: false},
+        { id: 4, src:testImage, title: ' YT33444333', note: `W-12-1209`, status: '代取中' , isTrue: false},
+        { id: 5, src:testImage, title: ' YT33444333', note: `W-12-1209`, status: '代取中' , isTrue: false},
+        { id: 6, src:testImage, title: ' YT33444333', note: `W-12-1209`, status: '代取中' , isTrue: false},
+        { id: 7, src:testImage, title: ' YT33444333', note: `W-12-1209`, status: '代取中' , isTrue: false},
+        { id: 8, src:testImage, title: ' YT33444333', note: `W-12-1209`, status: '代取中' , isTrue: false},
+        { id: 9, src:testImage, title: ' YT33444333', note: `W-12-1209`, status: '代取中' , isTrue: false},
       ]
     }
   },
@@ -65,6 +68,11 @@ export default {
     },
     scanning(){
       console.log('唤起摄像头')
+    },
+    toDetailsInfo(item){
+      uni.navigateTo({
+        url: '../../components/pageCom/detailsPage/index?item=' + JSON.stringify(item)
+      })
     }
   }
 }
@@ -83,9 +91,12 @@ export default {
   margin-left: 20px;
 }
 .listItem{
-  /deep/uni-button[size=mini]{
+  /deep/.uni-button[size=mini]{
     line-height: 2.4;
     font-size: 3px;
   }
+}
+/deep/.uni-list{
+  background-color: #f5f5f5;
 }
 </style>

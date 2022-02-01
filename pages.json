@@ -13,15 +13,34 @@
 			}
 		},
 		{
+			"path": "pages/personInfo/personInfo",
+			"style": {
+				"navigationBarTitleText": "我的"
+			}
+		},
+		{
 			"path": "components/pageCom/detailsPage/index",
 			"style": {
 				"navigationBarTitleText": "快递详情"
 			}
 		},
 		{
-			"path": "pages/personInfo/personInfo",
+			"path": "components/pageCom/launchSubstitute/index",
 			"style": {
-				"navigationBarTitleText": "我的"
+				"navigationBarTitleText": "发起代取"
+			}
+		},
+		{
+			"path": "components/pageCom/cancelSubstitute/index",
+			"style": {
+				"navigationBarTitleText": "申请取消"
+			}
+		}
+	,
+		{
+			"path": "components/pageCom/settingInfo/settingIndex",
+			"style": {
+				"navigationBarTitleText": "设置"
 			}
 		}
 	],
